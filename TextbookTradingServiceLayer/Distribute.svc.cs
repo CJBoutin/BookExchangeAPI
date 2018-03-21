@@ -17,5 +17,26 @@ namespace TextbookTradingServiceLayer
             return "Alive";
         }
 
+        /// <summary>
+        /// Receives the data the client sends when logging in, and if succesful returns the logged in User's Id.
+        /// If unsuccessful, returns an error.
+        /// </summary>
+        /// <param name="details"></param>
+        /// <returns></returns>
+        public string Authenticate(LoginDetails details)
+        {
+            string response = "";
+
+
+
+            return response;
+        }
+
+        public string NewListing(NewListingDetails details)
+        {
+            string response = "";
+
+            return response;
+        }
     }
 }

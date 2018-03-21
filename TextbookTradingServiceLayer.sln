@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextbookTradingServiceLayer", "TextbookTradingServiceLayer\TextbookTradingServiceLayer.csproj", "{5405F288-13C0-4D54-85B9-E79B1F5687D0}"
 EndProject
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "TB.Database", "TB.Database\TB.Database.sqlproj", "{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,12 @@ Global
 		{5405F288-13C0-4D54-85B9-E79B1F5687D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5405F288-13C0-4D54-85B9-E79B1F5687D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5405F288-13C0-4D54-85B9-E79B1F5687D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DAE4B16-A8E0-4B5F-950C-DA0A0FD4137D}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
