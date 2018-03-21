@@ -120,6 +120,7 @@
     <Folder Include="Properties" />
     <Folder Include="dbo\" />
     <Folder Include="dbo\Tables\" />
+    <Folder Include="Snapshots" />
   </ItemGroup>
   <ItemGroup>
     <Build Include="dbo\Tables\Transactions.sql">
@@ -142,5 +143,8 @@
       <AnsiNulls>On</AnsiNulls>
       <QuotedIdentifier>On</QuotedIdentifier>
     </Build>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Snapshots\TB.Database_20180321_14-28-04.dacpac" />
   </ItemGroup>
 </Project>

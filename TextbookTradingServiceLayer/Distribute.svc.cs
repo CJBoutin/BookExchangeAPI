@@ -1,10 +1,12 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TextbookTradingServiceLayer.EntityFramework;
 
 namespace TextbookTradingServiceLayer
 {
@@ -26,10 +28,28 @@ namespace TextbookTradingServiceLayer
         public string Authenticate(LoginDetails details)
         {
             string response = "";
+            using (TBDataModel db = new TBDataModel())
+            {
+                // Check to see if the user-password combination exists
+
+                var uId = (from b in db.Users
+                          where 
+                          b.PasswordHash == details.PasswordHash
+                          && b.UserName == details.UserName
+                          select b.Id).FirstOrDefault<int>();
+
+                // if the UserId is -1 then the value doesnt exist
+                if (uId == 0)
+                {
+                    response = JsonConvert.SerializeObject("-1");
+                    return response;
+                }
+
+                response = JsonConvert.SerializeObject(uId);
+            }
 
 
-
-            return response;
+                return response;
         }
 
         public string NewListing(NewListingDetails details)

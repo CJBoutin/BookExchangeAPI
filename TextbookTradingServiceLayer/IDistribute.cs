@@ -42,6 +42,15 @@ namespace TextbookTradingServiceLayer
         public string UserName { get; set; }
         [DataMember]
         public string PasswordHash { get; set; }
+    }
+
+    [DataContract]
+    public class NewUser
+    {
+        [DataMember]
+        public string UserName { get; set; }
+        [DataMember]
+        public string PasswordHash { get; set; }
         [DataMember]
         public string EmailAddress { get; set; }
     }
