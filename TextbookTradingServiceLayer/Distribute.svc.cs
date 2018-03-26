@@ -29,42 +29,63 @@ namespace TextbookTradingServiceLayer
         public string Authenticate(LoginDetails details)
         {
             string response = "";
-            using (TBDataModel db = new TBDataModel())
+            try
             {
-                // Check to see if the user-password combination exists
-
-                var uId = (from b in db.Users
-                          where 
-                          b.PasswordHash == details.PasswordHash
-                          && b.UserName == details.UserName
-                          select b.Id).FirstOrDefault<int>();
-
-                // if the UserId is -1 then the value doesnt exist
-                if (uId == 0)
+                using (TBDataModel db = new TBDataModel())
                 {
-                    response = JsonConvert.SerializeObject("-1");
-                    return response;
+                    // Check to see if the user-password combination exists
+
+                    var uId = (from b in db.Users
+                               where
+                               b.PasswordHash == details.PasswordHash
+                               && b.UserName == details.UserName
+                               select b.Id).FirstOrDefault<int>();
+
+                    // if the UserId is -1 then the value doesnt exist
+                    if (uId == 0)
+                    {
+                        response = JsonConvert.SerializeObject("-1");
+                        return response;
+                    }
+
+                    response = JsonConvert.SerializeObject(uId);
                 }
-
-                response = JsonConvert.SerializeObject(uId);
             }
-
+            catch(Exception e)
+            {
+                return e.Message;
+            }
 
                 return response;
         }
 
         public string CreateNewUser(NewUser details)
         {
+            string response;
+            try
+            {
 
-            string response = New.User(details);
+                response = New.User(details);
+            }catch(Exception e)
+            {
+                return e.Message;
+            }
             return response;
         }
 
         public string NewListing(NewListingDetails details)
         {
-            string response = New.Listing(details);
+            string response;
 
-            return response;
+            try
+            {
+                response = New.Listing(details);
+            }
+            catch(Exception e)
+            {
+                return e.Message;
+            }
+                return response;
         }
     }
 }
