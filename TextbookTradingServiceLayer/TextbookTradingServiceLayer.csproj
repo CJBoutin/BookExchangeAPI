@@ -80,6 +80,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\NewUser.cs" />
     <Compile Include="Distribute.svc.cs">
       <DependentUpon>Distribute.svc</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TextbookTradingServiceLayer.BusinessLogic;
 using TextbookTradingServiceLayer.EntityFramework;
 
 namespace TextbookTradingServiceLayer
@@ -52,9 +53,16 @@ namespace TextbookTradingServiceLayer
                 return response;
         }
 
+        public string CreateNewUser(NewUser details)
+        {
+
+            string response = New.User(details);
+            return response;
+        }
+
         public string NewListing(NewListingDetails details)
         {
-            string response = "";
+            string response = New.Listing(details);
 
             return response;
         }

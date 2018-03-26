@@ -27,6 +27,12 @@ namespace TextbookTradingServiceLayer
             UriTemplate = "Authenticate")]
         string Authenticate(LoginDetails details);
 
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "NewUser")]
+        string CreateNewUser(NewUser details);
+
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
@@ -53,17 +59,19 @@ namespace TextbookTradingServiceLayer
         public string PasswordHash { get; set; }
         [DataMember]
         public string EmailAddress { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
     }
 
     [DataContract]
     public class NewListingDetails
     {
         [DataMember]
-        public string UserId { get; set; }
+        public int UserId { get; set; }
         [DataMember]
         public string Name { get; set; }
         [DataMember]
-        public string Isbn { get; set; }
+        public string ISBN { get; set; }
         [DataMember]
         public string Image { get; set; }
         [DataMember]
@@ -73,9 +81,13 @@ namespace TextbookTradingServiceLayer
         [DataMember]
         public string Edition { get; set; }
         [DataMember]
-        public string ListPrice { get; set; }
+        public int ListPrice { get; set; }
         [DataMember]
         public string Negotiable { get; set; }
+
+        [DataMember]
+        public string Description { get; set; }
+
         [DataMember]
         public string Condition { get; set; }
     }
