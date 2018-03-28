@@ -39,6 +39,19 @@ namespace TextbookTradingServiceLayer
             Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "NewListing")]
         string NewListing(NewListingDetails details);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+            Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+            UriTemplate = "GetProfile?Uid={x}")]
+        string GetProfile(int x);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "AcceptPurchase")]
+        string AcceptPurchase(AcceptPurchase details);
+
     }
 
     [DataContract]
@@ -91,4 +104,15 @@ namespace TextbookTradingServiceLayer
         [DataMember]
         public string Condition { get; set; }
     }
+
+    [DataContract]
+    public class AcceptPurchase
+    {
+        [DataMember]
+        public int SellerId { get; set; }
+
+        [DataMember]
+        public int BidId { get; set; }
+    }
+
 }

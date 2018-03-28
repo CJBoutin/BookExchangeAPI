@@ -7,6 +7,7 @@ using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using TextbookTradingServiceLayer.BusinessLogic;
+using TextbookTradingServiceLayer.BusinessLogic.Responses;
 using TextbookTradingServiceLayer.EntityFramework;
 
 namespace TextbookTradingServiceLayer
@@ -17,7 +18,11 @@ namespace TextbookTradingServiceLayer
     {
         public string IsAlive()
         {
-            return "Alive";
+            string availableServices = @"Supported Methods:";
+            availableServices += "boutinvm.eastus.cloudapp.azure.com/Distribute.svc/Authenticate ";
+            availableServices += "boutinvm.eastus.cloudapp.azure.com/Distribute.svc/NewUser ";
+            availableServices += "boutinvm.eastus.cloudapp.azure.com/Distribute.svc/NewListing";
+            return availableServices;
         }
 
         /// <summary>
@@ -28,35 +33,7 @@ namespace TextbookTradingServiceLayer
         /// <returns></returns>
         public string Authenticate(LoginDetails details)
         {
-            string response = "";
-            try
-            {
-                using (TBDataModel db = new TBDataModel())
-                {
-                    // Check to see if the user-password combination exists
-
-                    var uId = (from b in db.Users
-                               where
-                               b.PasswordHash == details.PasswordHash
-                               && b.UserName == details.UserName
-                               select b.Id).FirstOrDefault<int>();
-
-                    // if the UserId is -1 then the value doesnt exist
-                    if (uId == 0)
-                    {
-                        response = JsonConvert.SerializeObject("-1");
-                        return response;
-                    }
-
-                    response = JsonConvert.SerializeObject(uId);
-                }
-            }
-            catch(Exception e)
-            {
-                return e.Message;
-            }
-
-                return response;
+            return AuthenticateUser.Auth(details);
         }
 
         public string CreateNewUser(NewUser details)
@@ -86,6 +63,31 @@ namespace TextbookTradingServiceLayer
                 return e.Message;
             }
                 return response;
+        }
+
+        public string GetProfile(int x)
+        {
+            try
+            {
+                return Profile.Get(x);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
+        }
+        public string AcceptPurchase(AcceptPurchase details)
+        {
+            try
+            {
+                return Purchase.Accept(details);
+            }
+            catch (Exception e)
+            {
+                return e.Message;
+            }
+
         }
     }
 }

@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using TextbookTradingServiceLayer.EntityFramework;
 
-namespace TextbookTradingServiceLayer.BusinessLogic
+namespace TextbookTradingServiceLayer.BusinessLogic.Responses
 {
     public static class New
     {
