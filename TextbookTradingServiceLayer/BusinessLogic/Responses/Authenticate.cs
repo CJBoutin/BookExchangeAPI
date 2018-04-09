@@ -11,8 +11,8 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
     {
         public static string Auth(LoginDetails details)
         {
-            
-            string response = "";
+
+            Dictionary<string, string> rDict = new Dictionary<string, string>();
             try
             {
                 using (TBDataModel db = new TBDataModel())
@@ -28,22 +28,22 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                     // if the UserId is -1 then the value doesnt exist
                     if (uId == 0)
                     {
-                        response = JsonConvert.SerializeObject("-1");
-                        return response;
+                        rDict.Add("Status", "0");
+                        rDict.Add("UserId", "Null");
+                        return JsonConvert.SerializeObject(rDict);
                     }
 
                     // Generate Json Token?
 
-
-                    response = JsonConvert.SerializeObject(uId);
+                    rDict.Add("Status", "1");
+                    rDict.Add("UserId", uId.ToString());
+                    return JsonConvert.SerializeObject(rDict);
                 }
             }
             catch (Exception e)
             {
                 return e.Message;
             }
-
-            return response;
 
         }
     }

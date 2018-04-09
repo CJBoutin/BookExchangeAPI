@@ -89,5 +89,18 @@ namespace TextbookTradingServiceLayer
             }
 
         }
+
+        public string SearchTransactions(ProductDetails details)
+        {
+            try
+            {
+                return JsonConvert.SerializeObject(Products.SearchTransactions(details));
+            }
+            catch(Exception e)
+            {
+                return JsonConvert.SerializeObject(e.Message);
+            }
+        }
+
     }
 }

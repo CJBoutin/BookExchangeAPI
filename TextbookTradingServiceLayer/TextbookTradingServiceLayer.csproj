@@ -84,6 +84,7 @@
     <Compile Include="BusinessLogic\Responses\Profile.cs" />
     <Compile Include="BusinessLogic\Responses\New.cs" />
     <Compile Include="BusinessLogic\Responses\Authenticate.cs" />
+    <Compile Include="BusinessLogic\Responses\Products.cs" />
     <Compile Include="Distribute.svc.cs">
       <DependentUpon>Distribute.svc</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>

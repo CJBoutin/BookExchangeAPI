@@ -52,6 +52,12 @@ namespace TextbookTradingServiceLayer
         UriTemplate = "AcceptPurchase")]
         string AcceptPurchase(AcceptPurchase details);
 
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "SearchTransactions")]
+        string SearchTransactions(ProductDetails details);
+
     }
 
     [DataContract]
@@ -96,7 +102,7 @@ namespace TextbookTradingServiceLayer
         [DataMember]
         public int ListPrice { get; set; }
         [DataMember]
-        public string Negotiable { get; set; }
+        public int Negotiable { get; set; }
 
         [DataMember]
         public string Description { get; set; }
@@ -115,4 +121,13 @@ namespace TextbookTradingServiceLayer
         public int BidId { get; set; }
     }
 
+    [DataContract]
+    public class ProductDetails
+    {
+        public string Title { get; set; }
+        [DataMember]
+        public string ISBN { get; set; }
+        [DataMember]
+        public string Author { get; set; }
+    }
 }
