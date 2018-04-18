@@ -54,7 +54,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public static string Listing(NewListingDetails details)
+        public static string Listing(ListingDetails details)
         {
             string response = "";
             using (var db = new TBDataModel())
@@ -80,7 +80,8 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
 
                     pId = newProd.Id;
                 }
-                var newListing = new Transaction();
+                // Make new listing
+                var newListing = new Transaction();               
 
                 newListing.Active = 1;
                 newListing.DateCreated = DateTime.UtcNow;
@@ -91,6 +92,17 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                 newListing.UserId = details.UserId;
 
                 db.Transactions.Add(newListing);
+
+                // Add the images uploaded to the database
+                foreach (var im in details.Images)
+                {
+                    var image = new Image();
+                    image.ImageData = Convert.FromBase64String(im);
+                    image.ProductId = pId;
+                    image.UserId = details.UserId;
+
+                    db.Images.Add(image);
+                }
 
                 db.SaveChanges();
 

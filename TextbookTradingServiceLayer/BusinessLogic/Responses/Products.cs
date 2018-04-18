@@ -13,9 +13,9 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
         /// </summary>
         /// <param name="details"></param>
         /// <returns></returns>
-        public static List<NewListingDetails> SearchTransactions(ProductDetails details)
+        public static List<ListingDetails> SearchTransactions(ProductDetails details)
         {
-            List<NewListingDetails> tDetails = new List<NewListingDetails>();
+            List<ListingDetails> tDetails = new List<ListingDetails>();
             List<int> productIds = new List<int>();
             using (var db = new TBDataModel())
             {
@@ -37,7 +37,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
 
                 foreach(var item in transactionList)
                 {
-                    tDetails.Add(new NewListingDetails
+                    tDetails.Add(new ListingDetails
                     {
                         UserId = item.UserId,
                         Name = item.Product.Title,

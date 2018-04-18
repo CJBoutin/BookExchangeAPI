@@ -32,5 +32,28 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
 
                 return JsonConvert.SerializeObject(rData);
         }
+
+        public static string Update(UpdateUser details)
+        {
+            Dictionary<string, string> rData = new Dictionary<string, string>();
+
+            using (var db = new TBDataModel())
+            {
+                // Get the user we want to edit
+                var uToChange = (from b in db.Users
+                                 where b.Id == details.UIdToChange
+                                 select b).FirstOrDefault();
+
+                uToChange.EmailAddress = details.EmailAddress;
+                uToChange.PasswordHash = details.PasswordHash;
+                uToChange.PhoneNumber = details.PhoneNumber;
+
+                db.SaveChanges();
+            }
+
+            rData.Add("Status", "1");
+            rData.Add("Result", "Operation Complete");
+            return JsonConvert.SerializeObject(rData);
+        }
     }
 }

@@ -38,7 +38,7 @@ namespace TextbookTradingServiceLayer
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
             Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
             UriTemplate = "NewListing")]
-        string NewListing(NewListingDetails details);
+        string NewListing(ListingDetails details);
 
         [OperationContract]
         [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
@@ -57,6 +57,19 @@ namespace TextbookTradingServiceLayer
         Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
         UriTemplate = "SearchTransactions")]
         string SearchTransactions(ProductDetails details);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "TransactionDetails?TranId={transactionId}")]
+        string GetTransactionDetails(int transactionId);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "UpdateProfile")]
+        string UpdateProfile(UpdateUser details);
+
 
     }
 
@@ -83,7 +96,33 @@ namespace TextbookTradingServiceLayer
     }
 
     [DataContract]
-    public class NewListingDetails
+    public class UpdateUser
+    {
+        [DataMember]
+        public int UIdToChange { get; set; }
+        [DataMember]
+        public string FirstName { get; set; }
+        [DataMember]
+        public string LastName { get; set; }
+        [DataMember]
+        public string PasswordHash { get; set; }
+        [DataMember]
+        public string EmailAddress { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
+    }
+
+
+    [DataContract]
+    public class BasicUserData
+    {
+        [DataMember]
+        public string UserName { get; set; }
+        [DataMember]
+        public string PhoneNumber { get; set; }
+    }
+    [DataContract]
+    public class ListingDetails
     {
         [DataMember]
         public int UserId { get; set; }
@@ -92,7 +131,7 @@ namespace TextbookTradingServiceLayer
         [DataMember]
         public string ISBN { get; set; }
         [DataMember]
-        public string Image { get; set; }
+        public List<string> Images { get; set; }
         [DataMember]
         public string Author { get; set; }
         [DataMember]

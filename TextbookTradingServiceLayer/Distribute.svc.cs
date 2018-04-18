@@ -50,7 +50,7 @@ namespace TextbookTradingServiceLayer
             return response;
         }
 
-        public string NewListing(NewListingDetails details)
+        public string NewListing(ListingDetails details)
         {
             string response;
 
@@ -102,5 +102,29 @@ namespace TextbookTradingServiceLayer
             }
         }
 
+        public string GetTransactionDetails(int transactionId)
+        {
+            try
+            {
+                // Test This
+                return JsonConvert.SerializeObject(Transactions.Get(transactionId));
+            }
+            catch(Exception e)
+            {
+                return JsonConvert.SerializeObject(e.Message);
+            }
+        }
+
+        public string UpdateProfile(UpdateUser details)
+        {
+            try
+            {
+                return Profile.Update(details);
+            }
+            catch(Exception e)
+            {
+                return JsonConvert.SerializeObject(e.Message);
+            }
+        }
     }
 }
