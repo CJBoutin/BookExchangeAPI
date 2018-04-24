@@ -52,6 +52,14 @@ namespace TextbookTradingServiceLayer.EntityFramework
                 .IsUnicode(false);
 
             modelBuilder.Entity<User>()
+                .Property(e => e.FirstName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
+                .Property(e => e.LastName)
+                .IsUnicode(false);
+
+            modelBuilder.Entity<User>()
                 .HasMany(e => e.Bids)
                 .WithRequired(e => e.User)
                 .WillCascadeOnDelete(false);

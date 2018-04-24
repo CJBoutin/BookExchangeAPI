@@ -110,6 +110,8 @@ namespace TextbookTradingServiceLayer
         public string EmailAddress { get; set; }
         [DataMember]
         public string PhoneNumber { get; set; }
+        [DataMember]
+        public string NewPwHash { get; set; }
     }
 
 

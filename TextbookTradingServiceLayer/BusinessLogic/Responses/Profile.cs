@@ -25,7 +25,10 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                     throw new Exception("No user exists with that Id.");
                 }
 
+                rData.Add("Status", "1");
                 rData.Add("UserName", userData.UserName);
+                rData.Add("FirstName", userData.FirstName);
+                rData.Add("LastName", userData.LastName);
                 rData.Add("PhoneNumber", userData.PhoneNumber);
                 rData.Add("Rating", userData.Rating.ToString());
             }
@@ -44,9 +47,25 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                                  where b.Id == details.UIdToChange
                                  select b).FirstOrDefault();
 
+                // If the hashed password equals the stored hash, then we are good to update info
+                if (uToChange.PasswordHash == details.PasswordHash)
+                {
+                    if (details.NewPwHash != null && details.NewPwHash != "")
+                        uToChange.PasswordHash = details.NewPwHash;
+                }
+
+
+                if (details.EmailAddress != null && details.EmailAddress != "")
                 uToChange.EmailAddress = details.EmailAddress;
-                uToChange.PasswordHash = details.PasswordHash;
-                uToChange.PhoneNumber = details.PhoneNumber;
+
+                if (details.PhoneNumber != null && details.PhoneNumber != "")
+                    uToChange.PhoneNumber = details.PhoneNumber;
+
+                if (details.FirstName != null && details.FirstName != "")
+                    uToChange.FirstName = details.FirstName;
+
+                if (details.LastName != null && details.LastName != "")
+                    uToChange.LastName = details.LastName;
 
                 db.SaveChanges();
             }

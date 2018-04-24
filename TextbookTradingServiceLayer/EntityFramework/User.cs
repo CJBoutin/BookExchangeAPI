@@ -36,6 +36,12 @@ namespace TextbookTradingServiceLayer.EntityFramework
 
         public int? Rating { get; set; }
 
+        [StringLength(255)]
+        public string FirstName { get; set; }
+
+        [StringLength(255)]
+        public string LastName { get; set; }
+
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Bid> Bids { get; set; }
 

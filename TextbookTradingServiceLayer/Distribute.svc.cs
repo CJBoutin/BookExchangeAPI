@@ -33,7 +33,19 @@ namespace TextbookTradingServiceLayer
         /// <returns></returns>
         public string Authenticate(LoginDetails details)
         {
-            return AuthenticateUser.Auth(details);
+            try
+            {
+
+                return AuthenticateUser.Auth(details);
+            }
+            catch(Exception e)
+            {
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
+
+            }
         }
 
         public string CreateNewUser(NewUser details)
@@ -45,7 +57,10 @@ namespace TextbookTradingServiceLayer
                 response = New.User(details);
             }catch(Exception e)
             {
-                return e.Message;
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
             return response;
         }
@@ -60,9 +75,12 @@ namespace TextbookTradingServiceLayer
             }
             catch(Exception e)
             {
-                return e.Message;
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
-                return response;
+            return response;
         }
 
         public string GetProfile(int x)
@@ -73,7 +91,10 @@ namespace TextbookTradingServiceLayer
             }
             catch (Exception e)
             {
-                return e.Message;
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
 
         }
@@ -85,7 +106,10 @@ namespace TextbookTradingServiceLayer
             }
             catch (Exception e)
             {
-                return e.Message;
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
 
         }
@@ -98,7 +122,10 @@ namespace TextbookTradingServiceLayer
             }
             catch(Exception e)
             {
-                return JsonConvert.SerializeObject(e.Message);
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
         }
 
@@ -111,7 +138,10 @@ namespace TextbookTradingServiceLayer
             }
             catch(Exception e)
             {
-                return JsonConvert.SerializeObject(e.Message);
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
         }
 
@@ -123,7 +153,10 @@ namespace TextbookTradingServiceLayer
             }
             catch(Exception e)
             {
-                return JsonConvert.SerializeObject(e.Message);
+                Dictionary<string, string> errorResult = new Dictionary<string, string>();
+                errorResult.Add("Status", "0");
+                errorResult.Add("Error Object", JsonConvert.SerializeObject(e));
+                return JsonConvert.SerializeObject(errorResult);
             }
         }
     }
