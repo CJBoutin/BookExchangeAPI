@@ -16,7 +16,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
         /// <returns></returns>
         public static string User(NewUser details)
         {
-            string result = "";
+            ResponseData r = new ResponseData();
             using (var db = new TBDataModel())
             {
                 // Check to see if the username already exists. If it does, return an error
@@ -43,10 +43,13 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                 // Save user Changes
                 db.SaveChanges();
 
-                result = newUser.Id.ToString();
+                r.Status = 1;
+                r.Schema = "NewUser";
+                r.Data.Add("UserId", newUser.Id.ToString());
+                r.Data.Add("UserName", newUser.UserName);
             }
 
-            return JsonConvert.SerializeObject(result);
+            return JsonConvert.SerializeObject(r);
         }
 
         /// <summary>

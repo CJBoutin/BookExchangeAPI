@@ -11,7 +11,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
     {
         public static string Get(int profileId)
         {
-            Dictionary<string, string> rData = new Dictionary<string, string>();
+            ResponseData r = new ResponseData();
 
             using (var db = new TBDataModel())
             {
@@ -25,20 +25,21 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                     throw new Exception("No user exists with that Id.");
                 }
 
-                rData.Add("Status", "1");
-                rData.Add("UserName", userData.UserName);
-                rData.Add("FirstName", userData.FirstName);
-                rData.Add("LastName", userData.LastName);
-                rData.Add("PhoneNumber", userData.PhoneNumber);
-                rData.Add("Rating", userData.Rating.ToString());
+                r.Status = 1;
+                r.Schema = "GetProfile";
+                r.Data.Add("UserName", userData.UserName);
+                r.Data.Add("FirstName", userData.FirstName);
+                r.Data.Add("LastName", userData.LastName);
+                r.Data.Add("PhoneNumber", userData.PhoneNumber);
+                r.Data.Add("Rating", userData.Rating.ToString());
             }
 
-                return JsonConvert.SerializeObject(rData);
+                return JsonConvert.SerializeObject(r);
         }
 
         public static string Update(UpdateUser details)
         {
-            Dictionary<string, string> rData = new Dictionary<string, string>();
+            ResponseData r = new ResponseData();
 
             using (var db = new TBDataModel())
             {
@@ -70,9 +71,9 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                 db.SaveChanges();
             }
 
-            rData.Add("Status", "1");
-            rData.Add("Result", "Operation Complete");
-            return JsonConvert.SerializeObject(rData);
+            r.Status = 1;
+            r.Data.Add("Result", "Operation Complete");
+            return JsonConvert.SerializeObject(r);
         }
     }
 }

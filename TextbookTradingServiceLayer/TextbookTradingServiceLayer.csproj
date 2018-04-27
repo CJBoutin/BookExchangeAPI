@@ -77,9 +77,11 @@
     </Content>
     <Content Include="Web.config">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogic\ResponseData.cs" />
     <Compile Include="BusinessLogic\Responses\Purchase.cs" />
     <Compile Include="BusinessLogic\Responses\Profile.cs" />
     <Compile Include="BusinessLogic\Responses\New.cs" />
