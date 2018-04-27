@@ -70,6 +70,17 @@ namespace TextbookTradingServiceLayer
         UriTemplate = "UpdateProfile")]
         string UpdateProfile(UpdateUser details);
 
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "POST", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "MakeBid")]
+        string MakeBid(BidData details);
+
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "GetBids?TranId={transactionId}")]
+        string GetBid(int transactionId);
 
     }
 
@@ -165,10 +176,25 @@ namespace TextbookTradingServiceLayer
     [DataContract]
     public class ProductDetails
     {
+        [DataMember]
         public string Title { get; set; }
         [DataMember]
         public string ISBN { get; set; }
         [DataMember]
         public string Author { get; set; }
     }
+
+    [DataContract]
+    public class BidData
+    {
+        [DataMember]
+
+        public int PurchaserId { get; set; }
+        [DataMember]
+
+        public int TransactionId { get; set; }
+        [DataMember]
+        public int ProposedPrice { get; set; }
+    }
+
 }

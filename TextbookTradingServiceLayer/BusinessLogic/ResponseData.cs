@@ -9,9 +9,9 @@ namespace TextbookTradingServiceLayer.BusinessLogic
     {
         public int Status { get; set; }
         public string Schema { get; set; }
-        public Dictionary<string, string> Data { get => data; set => data = value; }
+        public Dictionary<string, dynamic> Data { get => data; set => data = value; }
 
-        private Dictionary<string, string> data = new Dictionary<string, string>();
+        private Dictionary<string, dynamic> data = new Dictionary<string, dynamic>();
 
     }
 }

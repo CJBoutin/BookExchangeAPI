@@ -159,5 +159,38 @@ namespace TextbookTradingServiceLayer
                 return JsonConvert.SerializeObject(errorResult);
             }
         }
+
+        public string MakeBid(BidData details)
+        {
+            try
+            {
+                return BusinessLogic.Responses.Bid.Make(details);
+            }
+            catch(Exception e)
+            {
+                ResponseData r = new ResponseData();
+                r.Status = 0;
+                r.Schema = "Error";
+                r.Data.Add("Error Message", e.Message);
+                return JsonConvert.SerializeObject(r);
+            }
+        }
+
+        public string GetBid(int transactionId)
+        {
+            try
+            {
+                return BusinessLogic.Responses.Bid.Get(transactionId);
+            }
+            catch(Exception e)
+            {
+                ResponseData r = new ResponseData();
+                r.Status = 0;
+                r.Schema = "Error";
+                r.Data.Add("Error Message", e.Message);
+                return JsonConvert.SerializeObject(r);
+            }
+        }
+
     }
 }

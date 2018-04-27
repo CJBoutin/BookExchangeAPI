@@ -16,6 +16,8 @@ namespace TextbookTradingServiceLayer.EntityFramework
 
         public int ProposedPrice { get; set; }
 
+        public int? Accepted { get; set; }
+
         public virtual Transaction Transaction { get; set; }
 
         public virtual User User { get; set; }

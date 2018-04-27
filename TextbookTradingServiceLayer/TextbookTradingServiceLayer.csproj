@@ -82,6 +82,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BusinessLogic\ResponseData.cs" />
+    <Compile Include="BusinessLogic\Responses\Bid.cs" />
     <Compile Include="BusinessLogic\Responses\Purchase.cs" />
     <Compile Include="BusinessLogic\Responses\Profile.cs" />
     <Compile Include="BusinessLogic\Responses\New.cs" />
