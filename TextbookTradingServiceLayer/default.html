@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BookExchange</title>
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+    <!-- BookExchange JS -->
+    <script src="BookExchange.js"></script>
+    
+    <script>
+        $(document).ready(function()
+        {
+            $("input").focus(function()
+            {
+                $(this).css("background-color", "#bbbbbb");
+            });
+            $("input").blur(function()
+            {
+                $(this).css("background-color", "#ffffff");
+            });
+        });
+
+    </script>
+    
+    <link href="format.css" rel="stylesheet" />
+   
+</head>
+
+    
+<body>
+    
+    <!---Nav Bar--->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid" style="padding-right: 15px; padding-left: 15px">
+            <div class="navbar-header">
+            <a class="navbar-brand" href="#" onclick="changepage('default.html');">BookExchange</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="default.html">Home</a></li>
+                <li><a href="#" onclick="changepage('sell.html');">Sell</a></li>
+            </ul>
+            
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span class="glyphicon glyphicon-user"></span> Profile<span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#" onclick="changepage('editProfile.html');"><span class="glyphicon glyphicon-edit"></span> Edit Profile</a></li>
+                        <li><a href="#" onclick="logout();" id="logOut"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+                    </ul>
+                </li>
+                </ul>
+            </div>  
+        </nav>
+        
+    <!-- Header -->
+    <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;">
+        <img class="w3-image" src="booksBackground.jpg" alt="BookExchange Banner" width="1500" height="800">
+        <div class="w3-display-middle w3-margin-top w3-center">
+            <h1 class="w3-xxlarge w3-text-white"><span class="w3-black w3-opacity-min" style="padding-left: 5px; padding-right: 3px"><b>BE</b></span> <span class="w3-hide-small w3-text-light-grey">BookExchange</span></h1>
+        </div>
+    </header>
+        
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-full w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center">
+            <li class="w3-gray w3-xlarge w3-padding-32"><font color="white">Welcome To BookExchange!</font></li>
+            <li class="w3-padding-16">Book exchange is an application in  which users may buy/sell their used or new books. It allows college students to get some of the money back that they invested into their textbooks, and from the other perspective it allows them to potentially save money as well.</li>
+        </ul>
+      </div> 
+    </div>
+    
+    
+     <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-full w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center">
+            <li class="w3-light-blue w3-xlarge w3-padding-32"><font black="white">Get The App</font></li>
+            <li class="w3-padding-16">Download Our App and Get Selling!</li>
+            <li>GitHub link: <a href="https://github.com/CJBoutin/BookExchange">Click here</a></li>
+        </ul>
+      </div> 
+    </div>
+    
+    
+    
+            
+     <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-full w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center">
+         <li class="w3-gray w3-xlarge w3-padding-32"><font color="white">Testimonials</font></li>
+        </ul>
+      </div>
+     </div>
+    
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-third w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-black w3-xlarge w3-padding-32">Bill Gates</li>
+          <li class="w3-padding-16">"I wish I sold my books on BookExhange, I could have started up Microsoft 4 years sooner!"</li>
+          <li class="w3-padding-16">5/5 Would Sell Again!</li>
+        </ul>
+      </div>
+      
+      <div class="w3-third w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-black w3-xlarge w3-padding-32">Oprah Winfrey</li>
+          <li class="w3-padding-16">BookExhange made me rethink about switching to a computer science major.</li>
+          <li class="w3-padding-16">5/5 Greap App.</li>
+        </ul>
+      </div>
+      
+      <div class="w3-third">
+        <ul class="w3-ul w3-border w3-white w3-center w3-opacity w3-hover-opacity-off">
+          <li class="w3-black w3-xlarge w3-padding-32">Elon Musk</li>
+          <li class="w3-padding-16">"I would sell Tesla and SpaceX in order for 1% of BookExhange's stock."</li>
+          <li class="w3-padding-16">5 Stars and a free tesla for the creators.</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-full w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center">
+          <li class="w3-gray w3-xlarge w3-padding-32"><font color="white">Creators</font></li>
+          <li class="w3-padding-16">Dominic Amaliftano</li>
+          <li class="w3-padding-16">Connor Boutin</li>
+          <li class="w3-padding-16">Christopher John-Ison</li>
+          <li class="w3-padding-16">Nick Poidomani</li>
+          <li class="w3-padding-16">Brad Coles</li>
+          <li class="w3-padding-16">Emmanuel Scur</li>
+        </ul>
+      </div>
+    </div>
+            
+     <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-full w3-margin-bottom">
+        <ul class="w3-ul w3-border w3-white w3-center">
+         <li class="w3-light-blue w3-xlarge w3-padding-32"><font color="white">Contact Us</font></li>
+        <li>bookExhangeSupport@gmail.com</li>
+        </ul>
+      </div>
+     </div>
+    
+</body>
+            <!--<footer>
+                   <p>&copy; <%: DateTime.Now.Year %> - Book Resale Application</p>
+            </footer>-->
+</html>
