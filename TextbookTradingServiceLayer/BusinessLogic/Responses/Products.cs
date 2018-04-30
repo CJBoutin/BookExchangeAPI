@@ -39,6 +39,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                 {
                     tDetails.Add(new ListingDetails
                     {
+                        TransactionId = item.Id,
                         UserId = item.UserId,
                         Name = item.Product.Title,
                         Author = item.Product.Author,

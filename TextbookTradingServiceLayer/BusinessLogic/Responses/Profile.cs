@@ -32,6 +32,7 @@ namespace TextbookTradingServiceLayer.BusinessLogic.Responses
                 r.Data.Add("LastName", userData.LastName);
                 r.Data.Add("PhoneNumber", userData.PhoneNumber);
                 r.Data.Add("Rating", userData.Rating.ToString());
+                r.Data.Add("EmailAddress", userData.EmailAddress.ToString());
             }
 
                 return JsonConvert.SerializeObject(r);

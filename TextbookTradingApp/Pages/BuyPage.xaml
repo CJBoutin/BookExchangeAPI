@@ -1,0 +1,35 @@
+﻿<Page
+    x:Class="TextbookTradingApp.Pages.BuyPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TextbookTradingApp.Pages"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    <Page.Resources>
+    <Flyout x:Name="PlaceBid" x:Key="PlaceBid_Key">
+        <StackPanel>
+            <TextBox x:Name="BidAmount_TextBox" Width="100" PlaceholderText="Place your bid here."/>
+            <Button x:Name="AcceptBid" Content="Accept Bid" Width="150" Click="AcceptBid_Button_Click"/>
+        </StackPanel>
+    </Flyout>
+    </Page.Resources>
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+            <StackPanel x:Name="SearchControls_StackPanel" Orientation="Horizontal" Grid.Column="0" Grid.Row="0" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="10, 100, 10, 10">
+                <TextBox x:Name="Search_TextBox" Width="300" />
+                <Button x:Name="SearchListings_Button" Click="SearchListings_Button_Click">Search</Button>
+            </StackPanel>
+            <ScrollViewer Grid.Row="1" Grid.Column="0">
+            <StackPanel x:Name="Listings_StackPanel" Grid.Column="1" FlyoutBase.AttachedFlyout="{StaticResource PlaceBid_Key}">
+            
+                </StackPanel>
+            </ScrollViewer>
+    </Grid>
+</Page>

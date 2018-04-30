@@ -192,5 +192,22 @@ namespace TextbookTradingServiceLayer
             }
         }
 
+        public string GetUserTransactions(int uId)
+        {
+            try
+            {
+               return Transactions.GetUserTransactions(uId);
+            }
+            catch(Exception e)
+            {
+                ResponseData r = new ResponseData();
+                r.Status = 0;
+                r.Schema = "Error";
+                r.Data.Add("Error Message", e.Message);
+                return JsonConvert.SerializeObject(r);
+
+            }
+        }
+
     }
 }

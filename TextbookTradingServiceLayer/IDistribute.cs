@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using TextbookTradingServiceLayer.BusinessLogic;
 
 namespace TextbookTradingServiceLayer
 {
@@ -82,6 +83,12 @@ namespace TextbookTradingServiceLayer
         UriTemplate = "GetBids?TranId={transactionId}")]
         string GetBid(int transactionId);
 
+        [OperationContract]
+        [WebInvoke(BodyStyle = WebMessageBodyStyle.Bare,
+        Method = "GET", RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json,
+        UriTemplate = "GetUserTransactions?UserId={uId}")]
+        string GetUserTransactions(int uId);
+
     }
 
     [DataContract]
@@ -137,6 +144,8 @@ namespace TextbookTradingServiceLayer
     [DataContract]
     public class ListingDetails
     {
+        [DataMember]
+        public int TransactionId { get; set; }
         [DataMember]
         public int UserId { get; set; }
         [DataMember]
